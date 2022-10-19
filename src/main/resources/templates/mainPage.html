@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main page</title>
@@ -7,6 +7,10 @@
 <body>
 <h2>Main page</h2>
 <hr/>
-<p>Hello, user!</p>
+<div>
+    <form th:method="GET" th:action="@{/moi}">
+        <input type="submit" value="Calculate moment of inertia">
+    </form>
+</div>
 </body>
 </html>
