@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Moment of inertia</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="../../static/momentOfInertia.js"></script>
+    <script type="text/javascript" th:src="@{/momentOfInertia.js}"></script>
+
 </head>
 <body>
     <h2>Calculate moment of inertia</h2>
 
     <div>
         <p>Moment of inertia of circular section</p>
-        <img class="img" src="circle_section.gif" alt=" Image lost :("/>
+        <img class="img" th:src="@{/img/circle_section.gif}" alt=" Image lost :("/>
 
         <p>Circle diameter D =
             <input id="circle_dia" type="number" value="40" min="1"
