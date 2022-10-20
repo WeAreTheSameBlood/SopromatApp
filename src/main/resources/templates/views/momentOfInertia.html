@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Moment of inertia</title>
@@ -16,15 +16,45 @@
         <img class="img" th:src="@{/img/circle_section.gif}" alt=" Image lost :("/>
 
         <p>Circle diameter D =
-            <input id="circle_dia" type="number" value="40" min="1"
-                   onchange="changeCircleDia(this.value)"
-                   onkeyup="changeCircleDia(this.value)">
+            <input id="circle_dia" type="number" value="10" min="0"
+                   onchange="calcCircleParam(this.value), MathJax.typeset()">
         </p>
+        <hr/>
 
-        <div class="result">
-            <p> Circle area:
-                <p>\[A= {{π * D^2} \over 4} =\] </p>
-            <p id="circleDiaResult"></p>
+        <div id="circle_area">
+            <p> Section area: </p>
+            <div id="areaResult">
+                <p>\[A= {{π * D^2} \over 4} = {{π * 10^2} \over 4}=78.540\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="axial_moments">
+            <p> Axial moments of inertia of section: </p>
+            <div id="axialMomentsResult">
+                <p>\[J_x= J_y= {{π * D^4} \over 64} = {{π * 10^4} \over 64}=490.874\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="axial_resist_moments">
+            <p> Axial moments of resistance of section: </p>
+            <div id="axialResistMomentsResult">
+                <p>\[W_x= W_y= {{π * D^3} \over 32} = {{π * 10^3} \over 32}=98.175\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="polar_moment">
+            <p> Polar moment of inertia of a section: </p>
+            <div id="polarMomentResult">
+                <p>\[J_p= {{π * D^4} \over 32} = {{π * 10^4} \over 32}=981.748\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="polar_resist_moment">
+            <p> Polar moment of resistance of a section: </p>
+            <div id="polarResistMomentResult">
+                <p>\[W_p= {{π * D^3} \over 16} = {{π * 10^3} \over 16}=169.350\]</p>
+            </div>
+            <hr/>
         </div>
     </div>
 </body>
