@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Moment of inertia</title>
+    <title>Moments of inertia</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/javascript" th:src="@{/momentOfInertia.js}"></script>
 
 </head>
 <body>
-    <h2>Calculate moment of inertia</h2>
+    <h1>Calculate moments of inertia</h1>
 
     <div>
-        <p>Moment of inertia of circular section</p>
+        <h3>Moment of inertia of circular section</h3>
         <img class="img" th:src="@{/img/circle_section.gif}" alt=" Image lost :("/>
 
         <p>Circle diameter D =
@@ -53,6 +53,63 @@
             <p> Polar moment of resistance of a section: </p>
             <div id="polarResistMomentResult">
                 <p>\[W_p= {{π * D^3} \over 16} = {{π * 10^3} \over 16}=169.350\]</p>
+            </div>
+            <hr/>
+        </div>
+    </div>
+    <div>
+        <h3>Moment of inertia of an annular section</h3>
+        <img class="img" th:src="@{/img/tube_section.gif}" alt=" Image lost :("/>
+
+        <p>External diameter D =
+            <input id="tube_external_dia" type="number" value="12" min="0"
+                   onchange="calcTubeParam(this.value, 0), MathJax.typeset()">
+        </p>
+        <p>Inner diameter d =
+            <input id="tube_inner_dia" type="number" value="8" min="0"
+                   onchange="calcTubeParam(0, this.value), MathJax.typeset()">
+        </p>
+        <hr/>
+
+        <div id="tube_area">
+            <p> Section area: </p>
+            <div id="tubeAreaResult">
+                <p>\[A= {{π * D^2} \over 4} - {{π * d^2} \over 4} = {{π * {(12^2-8^2)}} \over 4}= 62.832\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="tube_alpha">
+            <p> Diameter ratio: </p>
+            <div id="tubeAlphaResult">
+                <p>\[α= { d \over D} = { 8 \over 12}= 0.667\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="tube_axial_moments">
+            <p> Axial moments of inertia of section: </p>
+            <div id="tubeAxialMomentsResult">
+                <p>\[J_x= J_y= {{{π * D^4} \over 64}(1-α^4)} = {{{π * 12^4} \over 64}(1-0.67^4)}=816.814\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="tube_axial_resist_moments">
+            <p> Axial moments of resistance of section: </p>
+            <div id="tubeAxialResistMomentsResult">
+                <p>\[W_x= W_y= {{{π * D^3} \over 32}(1-α^4)} = {{{π * 12^3} \over 32}(1-0.67^4)}=136.136\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="tube_polar_moment">
+            <p> Polar moment of inertia of a section: </p>
+            <div id="tubePolarMomentResult">
+                <p>\[J_p= {{π * D^4} \over 32} = {{π * 10^4} \over 32}=1633.628\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="tube_polar_resist_moment">
+            <p> Polar moment of resistance of a section: </p>
+            <div id="tubePolarResistMomentResult">
+                <p>\[W_p= {{{π * D^3} \over 16}(1-α^4)} = {{{π * 10^3} \over 16}(1-α^4)}=272.271\]</p>
             </div>
             <hr/>
         </div>
