@@ -57,6 +57,7 @@
             <hr/>
         </div>
     </div>
+
     <div>
         <h3>Moment of inertia of an annular section</h3>
         <img class="img" th:src="@{/img/tube_section.gif}" alt=" Image lost :("/>
@@ -114,6 +115,7 @@
             <hr/>
         </div>
     </div>
+
     <div>
         <h3>Moment of inertia of a rectangle</h3>
         <img class="img" th:src="@{/img/rect_section.gif}" alt=" Image lost :("/>
@@ -138,16 +140,55 @@
         <div id="rect_axial_moments">
             <p> Axial moments of inertia of section: </p>
             <div id="rectAxialMomentsResult">
-                <p>\[J_x= {{b * h^3} \over 12} = {{8 * 12^3} \over 12} =666\]</p>
-                <p>\[J_y= {{b^3 * h} \over 12} = {{8^3 * 12} \over 12} =666\]</p>
+                <p>\[J_x= {{b * h^3} \over 12} = {{8 * 12^3} \over 12} =512.000\]</p>
+                <p>\[J_y= {{b^3 * h} \over 12} = {{8^3 * 12} \over 12} =1152.000\]</p>
             </div>
             <hr/>
         </div>
         <div id="rect_axial_resist_moments">
             <p> Axial moments of resistance of section: </p>
             <div id="rectAxialResistMomentsResult">
-                <p>\[W_x= {{b * h^2} \over 6} = {{8 * 12^2} \over 6} =666\]</p>
-                <p>\[W_y= {{b^2 * h} \over 6} = {{8^2 * 12} \over 6} =666\]</p>
+                <p>\[W_x= {{b * h^2} \over 6} = {{8 * 12^2} \over 6} =128.000\]</p>
+                <p>\[W_y= {{b^2 * h} \over 6} = {{8^2 * 12} \over 6} =192.000\]</p>
+            </div>
+            <hr/>
+        </div>
+    </div>
+
+    <div>
+        <h3>Moment of inertia of a triangle</h3>
+        <img class="img" th:src="@{/img/triangle_section.gif}" alt=" Image lost :("/>
+
+        <p>Rect width b =
+            <input id="triangle_width" type="number" value="12" min="0"
+                   onchange="calcTriangleParam(this.value, 0), MathJax.typeset()">
+        </p>
+        <p>Rect height h =
+            <input id="triangle_height" type="number" value="8" min="0"
+                   onchange="calcTriangleParam(0, this.value), MathJax.typeset()">
+        </p>
+        <hr/>
+
+        <div id="triangle_area">
+            <p> Section area: </p>
+            <div id="triangleAreaResult">
+                <p>\[A= {{b * h} \over 2} = {{8 * 12} \over 2} = 48.000\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="triangle_axial_moments">
+            <p> Axial moments of inertia of section: </p>
+            <div id="triangleAxialMomentsResult">
+                <p>\[J_x= {{b * h^3} \over 36} = {{8 * 12^3} \over 36} = 170.667\]</p>
+                <p>\[J_y= {{b^3 * h} \over 48} = {{8^3 * 12} \over 48} = 288.000\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="triangle_axial_resist_moments">
+            <p> Axial moments of resistance of section: </p>
+            <div id="triangleAxialResistMomentsResult">
+                <p>\[W_x= {{b * h^2} \over 24} = {{8 * 12^2} \over 24} = 32.000\]</p>
+                <p>\[W_y= {{b^2 * h} \over 24} = {{8^2 * 12} \over 24} = 48.000\]</p>
             </div>
             <hr/>
         </div>
