@@ -9,6 +9,7 @@
 
 </head>
 <body>
+
     <h1>Calculate moments of inertia</h1>
 
     <div>
@@ -156,14 +157,14 @@
     </div>
 
     <div>
-        <h3>Moment of inertia of a triangle</h3>
+        <h3>Moment of inertia of an isosceles triangle</h3>
         <img class="img" th:src="@{/img/triangle_section.gif}" alt=" Image lost :("/>
 
-        <p>Rect width b =
+        <p>Triangle width b =
             <input id="triangle_width" type="number" value="12" min="0"
                    onchange="calcTriangleParam(this.value, 0), MathJax.typeset()">
         </p>
-        <p>Rect height h =
+        <p>Triangle height h =
             <input id="triangle_height" type="number" value="8" min="0"
                    onchange="calcTriangleParam(0, this.value), MathJax.typeset()">
         </p>
@@ -187,6 +188,52 @@
         <div id="triangle_axial_resist_moments">
             <p> Axial moments of resistance of section: </p>
             <div id="triangleAxialResistMomentsResult">
+                <p>\[W_x= {{b * h^2} \over 24} = {{8 * 12^2} \over 24} = 32.000\]</p>
+                <p>\[W_y= {{b^2 * h} \over 24} = {{8^2 * 12} \over 24} = 48.000\]</p>
+            </div>
+            <hr/>
+        </div>
+    </div>
+
+    <div>
+        <h3>Moment of inertia of a right triangle</h3>
+        <img class="img" th:src="@{/img/right_triangle_section.jpg}" alt=" Image lost :("/>
+
+        <p>Triangle width b =
+            <input id="right_triangle_width" type="number" value="12" min="0"
+                   onchange="calcRightTriangleParam(this.value, 0), MathJax.typeset()">
+        </p>
+        <p>Triangle height h =
+            <input id="right_triangle_height" type="number" value="8" min="0"
+                   onchange="calcRightTriangleParam(0, this.value), MathJax.typeset()">
+        </p>
+        <hr/>
+
+        <div id="right_triangle_area">
+            <p> Section area: </p>
+            <div id="rightTriangleAreaResult">
+                <p>\[A= {{b * h} \over 2} = {{8 * 12} \over 2} = 48.000\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="right_triangle_axial_moments">
+            <p> Axial moments of inertia of section: </p>
+            <div id="rightTriangleAxialMomentsResult">
+                <p>\[J_x= {{b * h^3} \over 36} = {{8 * 12^3} \over 36} = 170.667\]</p>
+                <p>\[J_y= {{b^3 * h} \over 36} = {{8^3 * 12} \over 36} = 288.000\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="right_triangle_centrifugal_moments">
+            <p> Centrifugal moment of inertia: </p>
+            <div id="rightTriangleCentrifugalMomentsResult">
+                <p>\[J_{xy}= ±{{b^2 * h^2} \over 72} = ±{{8^2 * 12^2} \over 72} = ±128.000\]</p>
+            </div>
+            <hr/>
+        </div>
+        <div id="right_triangle_axial_resist_moments">
+            <p> Axial moments of resistance of section: </p>
+            <div id="rightTriangleAxialResistMomentsResult">
                 <p>\[W_x= {{b * h^2} \over 24} = {{8 * 12^2} \over 24} = 32.000\]</p>
                 <p>\[W_y= {{b^2 * h} \over 24} = {{8^2 * 12} \over 24} = 48.000\]</p>
             </div>
