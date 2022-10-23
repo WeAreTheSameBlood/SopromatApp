@@ -59,3 +59,28 @@ function calcTubeParam(external_dia, inner_dia) {
     document.getElementById('tubePolarMomentResult').innerHTML = resultPolarMoment;
     document.getElementById('tubePolarResistMomentResult').innerHTML = resultPolarResistMoment;
 }
+
+var last_width_rect = 8;
+var last_height_rect = 12;
+function calcRectParam(width_rect, height_rect) {
+    width_rect = width_rect === 0 ?
+        width_rect = window.last_width_rect : window.last_width_rect = width_rect;
+    height_rect = height_rect === 0 ?
+        height_rect = window.last_height_rect : window.last_height_rect = height_rect;
+
+    let area = width_rect * height_rect;
+    let axialMomentsJx = (width_rect * Math.pow(height_rect, 3))/12;
+    let axialMomentsJy = (height_rect * Math.pow(width_rect, 3))/12;
+    let resistMomentsWx = (width_rect * Math.pow(height_rect, 2))/6;
+    let resistMomentsWy = (height_rect * Math.pow(width_rect, 2))/6;
+
+    let resultArea = "<p>\\[A= {b * h} = {"+ width_rect +" * "+ height_rect+"} = "+ area.toFixed(3) +"\\]</p>";
+    let resultAxialMoments = "<p>\\[J_x= {{b * h^3} \\over 12} = {{"+ width_rect +" * "+ height_rect+"^3} \\over 12} ="+ axialMomentsJx.toFixed(3) +"\\]</p>" +
+        "<p>\\[J_y= {{b^3 * h} \\over 12} = {{"+ width_rect +"^3 * "+ height_rect+"} \\over 12} ="+ axialMomentsJy.toFixed(3) +"\\]</p>";
+    let resultResistMoments = "<p>\\[W_x= {{b * h^2} \over 6} = {{"+ width_rect +" * "+ height_rect+"^2} \\over 6} ="+ resistMomentsWx.toFixed(3) +"\\]</p> " +
+        "<p>\\[W_y= {{b^2 * h} \\over 6} = {{"+ width_rect +"^2 * "+ height_rect+"} \\over 6} ="+ resistMomentsWy.toFixed(3) +"\\]</p>";
+
+    document.getElementById('rectAreaResult').innerHTML = resultArea;
+    document.getElementById('rectAxialMomentsResult').innerHTML = resultAxialMoments;
+    document.getElementById('rectAxialResistMomentsResult').innerHTML = resultResistMoments;
+}
