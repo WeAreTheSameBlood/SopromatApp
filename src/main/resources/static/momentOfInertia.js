@@ -18,17 +18,14 @@ function calcCircleParam(value) {
     let resultPolarResistMoment = "<p>\\[W_p= {{π * D^3} \\over 16} = {{π * " + value +"^3} \\over 16}="
         + polarResistMoment.toFixed(3) + "\\]</p>";
 
-    document.getElementById('areaResult').innerHTML = resultArea;
-    document.getElementById('axialMomentsResult').innerHTML = resultAxialMoments;
-    document.getElementById('axialResistMomentsResult').innerHTML = resultResistMoments;
-    document.getElementById('polarMomentResult').innerHTML = resultPolarMoment;
-    document.getElementById('polarResistMomentResult').innerHTML = resultPolarResistMoment;
+    pasteToHTML(['areaResult','axialMomentsResult','axialResistMomentsResult',
+            'polarMomentResult','polarResistMomentResult'],
+        [resultArea,resultAxialMoments,resultResistMoments,resultPolarMoment,resultPolarResistMoment]);
 }
 
 var last_external_dia = 12;
 var last_inner_dia = 8;
 function calcTubeParam(external_dia, inner_dia) {
-
     external_dia = external_dia === 0 ?
         external_dia = window.last_external_dia : window.last_external_dia = external_dia;
     inner_dia = inner_dia === 0 ?
@@ -52,21 +49,18 @@ function calcTubeParam(external_dia, inner_dia) {
     let resultPolarResistMoment = "<p>\\[W_p= {{{π * D^3} \\over 16}(1-α^4)} = {{{π * " + external_dia +"^3} \\over 16}(1-"+ alpha.toFixed(3) +"^4)}="
         + polarResistMoment.toFixed(3) + "\\]</p>";
 
-    document.getElementById('tubeAreaResult').innerHTML = resultArea;
-    document.getElementById('tubeAlphaResult').innerHTML = resultAlpha;
-    document.getElementById('tubeAxialMomentsResult').innerHTML = resultAxialMoments;
-    document.getElementById('tubeAxialResistMomentsResult').innerHTML = resultResistMoments;
-    document.getElementById('tubePolarMomentResult').innerHTML = resultPolarMoment;
-    document.getElementById('tubePolarResistMomentResult').innerHTML = resultPolarResistMoment;
+    pasteToHTML(['tubeAreaResult','tubeAlphaResult','tubeAxialMomentsResult',
+            'tubeAxialResistMomentsResult','tubePolarMomentResult','tubePolarResistMomentResult'],
+        [resultArea, resultAlpha, resultAxialMoments, resultResistMoments, resultPolarMoment,resultPolarResistMoment])
 }
 
-var last_width_rect_triangle = 8;
-var last_height_rect_triangle = 12;
+var last_width_rect = 8;
+var last_height_rect = 12;
 function calcRectParam(width_rect, height_rect) {
     width_rect = width_rect === 0 ?
-        width_rect = window.last_width_rect_triangle : window.last_width_rect_triangle = width_rect;
+        width_rect = window.last_width_rect : window.last_width_rect = width_rect;
     height_rect = height_rect === 0 ?
-        height_rect = window.last_height_rect_triangle : window.last_height_rect_triangle = height_rect;
+        height_rect = window.last_height_rect : window.last_height_rect = height_rect;
 
     let area = width_rect * height_rect;
     let axialMomentsJx = (width_rect * Math.pow(height_rect, 3))/12;
@@ -80,16 +74,17 @@ function calcRectParam(width_rect, height_rect) {
     let resultResistMoments = "<p>\\[W_x= {{b * h^2} \over 6} = {{"+ width_rect +" * "+ height_rect+"^2} \\over 6} ="+ resistMomentsWx.toFixed(3) +"\\]</p> " +
         "<p>\\[W_y= {{b^2 * h} \\over 6} = {{"+ width_rect +"^2 * "+ height_rect+"} \\over 6} ="+ resistMomentsWy.toFixed(3) +"\\]</p>";
 
-    document.getElementById('rectAreaResult').innerHTML = resultArea;
-    document.getElementById('rectAxialMomentsResult').innerHTML = resultAxialMoments;
-    document.getElementById('rectAxialResistMomentsResult').innerHTML = resultResistMoments;
+    pasteToHTML(['rectAreaResult','rectAxialMomentsResult','rectAxialResistMomentsResult'],
+        [resultArea, resultAxialMoments, resultResistMoments]);
 }
 
+var last_width_triangle = 8;
+var last_height_triangle = 12;
 function calcTriangleParam(width_triangle, height_triangle) {
     width_triangle = width_triangle === 0 ?
-        width_triangle = window.last_width_rect_triangle : window.last_width_rect_triangle = width_triangle;
+        width_triangle = window.last_width_triangle : window.last_width_triangle = width_triangle;
     height_triangle = height_triangle === 0 ?
-        height_triangle = window.last_height_rect_triangle : window.last_height_rect_triangle = height_triangle;
+        height_triangle = window.last_height_triangle : window.last_height_triangle = height_triangle;
 
     let area = (width_triangle * height_triangle)/2;
     let axialMomentsJx = (width_triangle * Math.pow(height_triangle, 3))/36;
@@ -103,16 +98,17 @@ function calcTriangleParam(width_triangle, height_triangle) {
     let resultResistMoments = "<p>\\[W_x= {{b * h^2} \\over 6} = {{"+ width_triangle +" * "+ height_triangle+"^2} \\over 24} ="+ resistMomentsWx.toFixed(3) +"\\]</p> " +
         "<p>\\[W_y= {{b^2 * h} \\over 6} = {{"+ width_triangle +"^2 * "+ height_triangle+"} \\over 24} ="+ resistMomentsWy.toFixed(3) +"\\]</p>";
 
-    document.getElementById('triangleAreaResult').innerHTML = resultArea;
-    document.getElementById('triangleAxialMomentsResult').innerHTML = resultAxialMoments;
-    document.getElementById('triangleAxialResistMomentsResult').innerHTML = resultResistMoments;
+    pasteToHTML(['triangleAreaResult', 'triangleAxialMomentsResult', 'triangleAxialResistMomentsResult'],
+        [resultArea, resultAxialMoments, resultResistMoments]);
 }
 
+var last_width_right_triangle = 8;
+var last_height_right_triangle = 12;
 function calcRightTriangleParam(width_triangle, height_triangle) {
     width_triangle = width_triangle === 0 ?
-        width_triangle = window.last_width_rect_triangle : window.last_width_rect_triangle = width_triangle;
+        width_triangle = window.last_width_right_triangle : window.last_width_right_triangle = width_triangle;
     height_triangle = height_triangle === 0 ?
-        height_triangle = window.last_height_rect_triangle : window.last_height_rect_triangle = height_triangle;
+        height_triangle = window.last_height_right_triangle : window.last_height_right_triangle = height_triangle;
 
     let area = (width_triangle * height_triangle)/2;
     let axialMomentsJx = (width_triangle * Math.pow(height_triangle, 3))/36;
@@ -128,8 +124,13 @@ function calcRightTriangleParam(width_triangle, height_triangle) {
     let resultResistMoments = "<p>\\[W_x= {{b * h^2} \\over 6} = {{"+ width_triangle +" * "+ height_triangle+"^2} \\over 24} ="+ resistMomentsWx.toFixed(3) +"\\]</p> " +
         "<p>\\[W_y= {{b^2 * h} \\over 6} = {{"+ width_triangle +"^2 * "+ height_triangle+"} \\over 24} ="+ resistMomentsWy.toFixed(3) +"\\]</p>";
 
-    document.getElementById('rightTriangleAreaResult').innerHTML = resultArea;
-    document.getElementById('rightTriangleAxialMomentsResult').innerHTML = resultAxialMoments;
-    document.getElementById('rightTriangleCentrifugalMomentsResult').innerHTML = resultCentrifugalMoments;
-    document.getElementById('rightTriangleAxialResistMomentsResult').innerHTML = resultResistMoments;
+    pasteToHTML(['rightTriangleAreaResult', 'rightTriangleAxialMomentsResult',
+        'rightTriangleCentrifugalMomentsResult', 'rightTriangleAxialResistMomentsResult'],
+        [resultArea, resultAxialMoments, resultCentrifugalMoments, resultResistMoments]);
+}
+
+function pasteToHTML(elemsID = [], results = []) {
+    for (let i = 0; i < elemsID.length; i++) {
+        document.getElementById(elemsID[i].toString()).innerHTML = results[i];
+    }
 }
